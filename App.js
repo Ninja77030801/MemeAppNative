@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 
 export default function App() {
+  const [memeData, setMemeData] = useState()
+  useEffect(() => {
+    axios.get('https://meme-api.com/gimme').then(result => {
+      setMemeData(result.data)
+    })
+  })
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
